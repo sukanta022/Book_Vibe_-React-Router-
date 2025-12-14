@@ -1,9 +1,11 @@
 import React from 'react';
 import { Star } from 'lucide-react';
+import { Link } from 'react-router';
 const Book = ({book}) => {
-    console.log(book)
+    
     return (
-        <div className="card bg-base-100 w-96 shadow-sm p-5 border-1 border-gray-300">
+        <Link to={`/bookDetails/${book.bookId}`}>
+            <div className="card bg-base-100 w-96 shadow-sm p-5 border-1 border-gray-300">
                 <figure className='p-5 bg-[#F3F3F3] mb-5'>
                     <img
                     src={book.image}
@@ -11,7 +13,7 @@ const Book = ({book}) => {
                     alt="Shoes" />
                 </figure>
                 <div className="space-y-3">
-                    <div className='flex justify-center items-center gap-5 space-y-1'>
+                    <div className='flex justify-center items-center gap-5'>
                         <div className='bg-[#23BE0A]/10 px-2 py-1 rounded-xl'>{book.tags[0]}</div>
                         <div className='bg-[#23BE0A]/10 px-2 py-1 rounded-xl '>{book.tags[1]}</div>
                     </div>
@@ -26,6 +28,7 @@ const Book = ({book}) => {
                     
                 </div>
             </div>
+        </Link>
     );
 };
 
