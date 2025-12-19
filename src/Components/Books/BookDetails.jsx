@@ -1,12 +1,23 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
+import { addToStore } from '../../utility/addToDB';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
+const MySwal = withReactContent(Swal)
 const BookDetails = () => {
     const {id} = useParams()
     const ID = parseInt(id)
     const books = useLoaderData()
     const bookData = books.find(book => book.bookId === ID)
-    console.log(bookData)
+    const handleMarkAsRead = (ID) => {
+        addToStore(ID)
+        Swal.fire({
+            title: "Mark as read",
+  icon: "success",
+  draggable: true
+})
+    }
     return (
         <div className='flex flex-col lg:flex-row justify-between items-center mt-8'>
             <div className='lg:w-1/2 flex justify-center items-center'>
@@ -38,7 +49,7 @@ const BookDetails = () => {
                     <p className='flex space-x-25'><span className='text-[#131313]/70'>Rating : </span> <span className='font-semibold'>{bookData.rating}</span></p>
                 </div>
                 <div className='flex justify-center lg:justify-self-start gap-5 mt-10'>
-                    <button className='btn p-5'>Read</button>
+                    <button onClick={()=>handleMarkAsRead(id)} className='btn p-5'>Mark As Read</button>
                     <button className='btn p-5 bg-[#50B1C9]'>Wishlist</button>
                 </div>
             </div>

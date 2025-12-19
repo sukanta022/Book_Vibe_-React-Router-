@@ -5,7 +5,8 @@ const Header = () => {
     const navList = <>
         <li className='hover:border-2 hover:border-green-400 hover:text-green-500'><Link to={"/"}>
         Home</Link></li>
-        <li className='hover:border-2 hover:border-green-400 hover:text-green-500'><a>Listed Books</a></li>
+        <li className='hover:border-2 hover:border-green-400 hover:text-green-500'><Link to={"/Listed_Books"}>Listed Books</Link></li>
+        
         <li className='hover:border-2 hover:border-green-400 hover:text-green-500'><a>Pages to Read</a></li>
     </>
     
